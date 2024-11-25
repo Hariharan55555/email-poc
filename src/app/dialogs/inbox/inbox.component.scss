@@ -1,0 +1,247 @@
+/* General Layout */
+.mailbox-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.mailbox-sidebar {
+  width: 30%;
+  background-color: #f3f3f3;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  height: 97%;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d1d1d1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a394e;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #43425d;
+}
+
+.mailbox-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #fff;
+  width: 70%;
+  height: 90%;
+  overflow: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.sidebar-list {
+  height: 83%;
+  overflow: auto;
+}
+
+.email-item {
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+// .email-item:hover {
+//   background-color: #e6f7ff;
+// }
+
+.email-info {
+  font-size: 12px;
+  display: flex;
+  gap: 20px;
+  // align-items: center;
+}
+
+.email-sender {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.content-center {
+  display: flex;
+  justify-content: center;
+}
+
+.email-subject {
+  color: #666;
+  font-size: 11px;
+}
+
+.email-date {
+  color: #999;
+  font-size: 11px;
+}
+
+/* Content Area Styling */
+.content-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  .selected-date {
+    font-size: 12px;
+  }
+}
+
+.content-body {
+  line-height: 1.6;
+  height: 83%;
+  overflow: auto;
+}
+
+::ng-deep {
+
+  .mat-mdc-button-ripple,
+  .mat-mdc-focus-indicator,
+  .mat-mdc-button-touch-target,
+  .mat-mdc-button-persistent-ripple {
+    display: none !important;
+  }
+}
+
+.email {
+  margin: 0;
+}
+
+.star-btn {
+  width: 30px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border: unset;
+  overlay: unset;
+  cursor: pointer;
+}
+
+.card-content {
+  margin: 10px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.1s ease;
+  /* Smooth transition for the shadow */
+
+  &:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+    /* Larger shadow on hover */
+  }
+
+  ::ng-deep {
+    .mat-mdc-card-content>:last-child:not(.mat-mdc-card-footer) {
+      border-bottom: unset !important;
+    }
+
+    .mat-mdc-card-content {
+      padding: 10px;
+    }
+  }
+
+  .email-body {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 5em;
+    line-height: 15px;
+    color: #666;
+    font-size: 11px;
+    margin-top: 5px;
+    padding: 0 20px 0 5px;
+  }
+
+  .sender-subject {
+    display: grid;
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+
+
+}
+
+.sender-wrapper {
+  h4 {
+    margin: 5px 0;
+  }
+
+  h5 {
+    margin: 5px 0;
+  }
+
+  .selected-date {
+    margin: 5px 0;
+    font-size: 10px;
+  }
+}
+
+// .extras-wrapper {
+
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.ai-response-wrapper {
+  margin-top: 30px;
+
+  p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #444;
+  }
+
+  .ai-response {
+    background-color: #00796b;
+    color: #fff;
+    padding: 0px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+    background: #167f8d !important;
+    color: #fff;
+    border-radius: 20px;
+    height: 25px;
+    display: flex;
+
+    &:hover {
+      background-color: #004d40;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .spinner-wrapper {
+    display: flex;
+    gap: 10px
+  }
+}
+
+::ng-deep {
+  .mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+  .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+    stroke: #ffffff !important;
+  }
+}

@@ -1,0 +1,100 @@
+<div class="mailbox-container">
+  <!-- Sidebar for email list -->
+  <div class="mailbox-sidebar">
+    <div class="sidebar-header">
+      <h2>Inbox</h2>
+    </div>
+
+    <div class="sidebar-list" [ngClass]="{ 'content-center': !emails.length }">
+      <!-- Iterate through the list of emails using *ngFor -->
+      @for (email of emails; track $index) {
+
+      <mat-card appearance="outlined" class="card-content">
+        <mat-card-content (click)="selectEmail(email)">
+          <div class="email-item">
+            <div class="email-info">
+              <p class="email star-btn">
+                @if (email.isFavorate) {
+                <button
+                  class="star-btn"
+                  (click)="email.isFavorate = false; onStarred()"
+                >
+                  <svg
+                    height="18"
+                    viewBox="0 0 512 512"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M394,480a16,16,0,0,1-9.39-3L256,383.76,127.39,477a16,16,0,0,1-24.55-18.08L153,310.35,23,221.2A16,16,0,0,1,32,192H192.38l48.4-148.95a16,16,0,0,1,30.44,0l48.4,149H480a16,16,0,0,1,9.05,29.2L359,310.35l50.13,148.53A16,16,0,0,1,394,480Z"
+                    />
+                  </svg>
+                </button>
+                } @else {
+                <button
+                  class="star-btn"
+                  (click)="email.isFavorate = true; onStarred()"
+                >
+                  <svg
+                    class="feather feather-star"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                    />
+                  </svg>
+                </button>
+                }
+              </p>
+              <div class="sender-subject">
+                <p class="email email-sender">{{ email.sender }}</p>
+                <p class="email email-subject">{{ email.subject }}</p>
+              </div>
+            </div>
+            <p class="email email-date">{{ email.date }}</p>
+          </div>
+          <p class="email email-body">{{ email.body }}</p>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+  </div>
+
+  <!-- Main content for selected email -->
+  @if (selectedEmail) {
+  <div class="mailbox-content">
+    <div class="content-header">
+      <div class="sender-wrapper">
+        <h4>{{ selectedEmail.sender }}</h4>
+        <h5>{{ selectedEmail.subject }}</h5>
+        <p class="selected-date">{{ selectedEmail.date }}</p>
+      </div>
+    </div>
+
+    <div class="content-body">
+      <p>{{ selectedEmail.body }}</p>
+      <div class="ai-response-wrapper">
+        <button
+          mat-raised-button
+          class="ai-response"
+          (click)="getAiResponse(selectedEmail.body)"
+        >
+          <div class="spinner-wrapper">
+            Get AI-generated reply @if (isLoading) {
+            <mat-spinner diameter="20"></mat-spinner>
+            }
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+</div>

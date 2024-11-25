@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="toolbar">
+    <div class="header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+      Compose
+    </div>
+    <mat-icon class="mat-18 close-icon" (click)="closeDialog()">close</mat-icon>
+  </div>
+
+  <div class="email-composer">
+    <div class="email-fields">
+        <div class="field">
+            <label for="to" class="to-label">To</label>
+            <mat-form-field class="example-chip-list">
+              <mat-chip-grid #chipGrid aria-label="email selection">
+                @for (email of emails(); track $index) {
+                  <mat-chip-row>
+                    {{email}}
+                      <mat-icon class="mat-18 chip-close-icon" (click)="remove(email)">close</mat-icon>
+                  </mat-chip-row>
+                }
+              </mat-chip-grid>
+              <input
+                name="currentemail"
+                class="chip-input"
+                #emailInput
+                [(ngModel)]="currentemail"
+                [matChipInputFor]="chipGrid"
+                [matAutocomplete]="auto"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)"
+              />
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                @for (email of filteredemails(); track email) {
+                  <mat-option [value]="email">{{email}}</mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="subject-field">
+        <label for="subject" class="subject-label">Subject</label>
+        <input type="text" id="subject" placeholder="Add a subject">
+    </div>
+
+    <div class="message-body">
+        <label for="body" class="message-label">Message</label>
+        <textarea id="body" class="text-message" placeholder="Type your message here..." rows="8"></textarea>
+    </div>
+
+    <div class="footer">
+        <span>Draft saved at 5:57 PM</span>
+    </div>
+
+    <div class="message-action">
+      <button class="send-button" mat-raised-button (click)="sendEmail()">Send</button>
+  </div>
+  </div>
+</div>

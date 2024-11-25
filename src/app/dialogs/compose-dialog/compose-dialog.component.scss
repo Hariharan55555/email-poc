@@ -1,0 +1,191 @@
+::ng-deep .compose-dialog {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .email-composer {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+  }
+
+  .header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .mat-18.close-icon {
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+
+
+
+  .send-button,
+  .dropdown-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .send-button:hover,
+  .dropdown-button:hover {
+    background-color: #45a049;
+  }
+
+  .email-fields .field {
+    margin-bottom: 15px;
+    display: flex;
+  }
+
+  mat-form-field {
+    width: 100%;
+
+  }
+
+  .to-label {
+    position: relative;
+    width: 80px;
+  }
+
+  .subject-label,
+  .message-label {
+    @extend .to-label;
+    width: 70px;
+  }
+
+  .chip-input {
+    width: 100%;
+  }
+
+  .subject-field,
+  .message-body {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+    max-height: 100px;
+
+    .text-message {
+      max-height: 100px;
+    }
+  }
+
+  .subject-field label,
+  .message-body label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .footer {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+  }
+
+  .message-action {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .toolbar {
+    height: fit-content;
+    width: 100%;
+    position: relative;
+    cursor: move;
+  }
+
+  .mat-18.chip-close-icon {
+    cursor: pointer;
+    font-size: 15px;
+    background-color: #fff;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    padding-right: 1px;
+    color: #000;
+    font-weight: 600;
+  }
+
+  ::ng-deep {
+    .mat-mdc-chip-action-label {
+      display: flex;
+      gap: 5px;
+      color: #fff !important;
+    }
+
+    .mat-mdc-chip {
+      background: slategray !important;
+      max-width: fit-content;
+    }
+
+    // .mat-mdc-dialog-surface {
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #d1d1d1;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #3a394e;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #43425d;
+    }
+
+    ::-webkit-scrollbar:horizontal {
+      height: 6px;
+    }
+
+    // }
+
+    .mat-mdc-chip-set .mdc-evolution-chip-set__chips {
+      min-width: 100%;
+      max-height: 100px;
+      overflow: auto;
+      margin-bottom: 10px;
+    }
+  }
+}

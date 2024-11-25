@@ -1,0 +1,30 @@
+
+<div class="command-bar">
+  <div class="header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+    Utiliko Command Bar
+  </div>
+  <mat-icon class="mat-18 close-icon" (click)="closeDialog()">close</mat-icon>
+  <mat-divider class="content-divider"></mat-divider>
+  <div class="content">
+    <div class="input-wrapper">
+        <input type="text" class="search-field" matInput [(ngModel)]="searchText">
+    </div>
+    @for (option of options; track option.id) {
+      <ng-container>
+        @if (option.value.toLowerCase().includes(searchText.toLowerCase())) {
+          <button class="options-button" (click)="actionChange(option.id)">
+            <div class="options">
+              <span>{{ option.value }}</span>
+              <span>{{ option.shortcut }}</span>
+            </div>
+          </button>
+        }
+      </ng-container>
+    }
+    @if (isUnMatched()) {
+      <div class="options">
+        No options found!
+      </div>
+    }
+  </div>
+</div>

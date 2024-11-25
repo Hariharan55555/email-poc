@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://vivantai.softsuavetestandpocs.in",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": "/api/v1"
+    }
+  }
+}

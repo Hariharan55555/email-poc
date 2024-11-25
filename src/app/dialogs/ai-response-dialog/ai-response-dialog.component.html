@@ -1,0 +1,14 @@
+<div class="message-container">
+  <div class="copy-section">
+    <button
+      class="copy-btn"
+      (click)="copyToClipboard(messageContent)"
+    >
+      📋
+    </button>
+  </div>
+
+  <pre class="email-content">{{
+    messageContent
+  }}</pre>
+</div>

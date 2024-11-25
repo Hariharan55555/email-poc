@@ -1,0 +1,93 @@
+<div class="example-container">
+  <!-- <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="title">Utiliko email-poc</h1>
+  </mat-toolbar> -->
+
+
+  <div class="dashboard-content">
+    <mat-drawer-container class="example-container" autosize>
+      <mat-drawer #snav class="custom-sidenav" mode="side" [opened]="true">
+        <!-- <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button> -->
+        <button class="menu small-content" mat-icon-button (click)="snav.toggle(); smallnav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <!-- <div class="first-content"> -->
+          <button mat-raised-button class="compose" (click)="composeMail()">
+            <mat-icon class="mat-18">edit</mat-icon>
+            Compose
+          </button>
+        <!-- </div> -->
+        @for (nav of navItems; track nav) { @if (nav.id === common.SIDENAV) {
+        <div class="contents" [ngClass]="{'selected-content': selectedFolder === nav.id}" (click)="snav.toggle(); smallnav.toggle()">
+          <mat-icon class="mat-18">{{ nav.icon }}</mat-icon>
+          <a mat-list-item routerLink="." class="options">{{ nav.value }}</a>
+        </div>
+        } @else if (nav.id === common.STARRED) {
+        <div class="contents starred-content" [ngClass]="{'selected-content': selectedFolder === nav.id}" (click)="dialogActions(nav.id)">
+          <div class="star-container">
+            <mat-icon class="mat-18">{{ nav.icon }}</mat-icon>
+            <a
+              mat-list-item
+              routerLink="."
+              class="options"
+              >{{ nav.value }}</a
+            >
+          </div>
+          @if (starredCount) {
+            <div class="star-count">{{starredCount}}</div>
+          }
+        </div>
+        } @else {
+          <div class="contents" [ngClass]="{'selected-content': selectedFolder === nav.id}" (click)="dialogActions(nav.id)">
+            <mat-icon class="mat-18">{{ nav.icon }}</mat-icon>
+            <a
+              mat-list-item
+              routerLink="."
+              class="options"
+              >{{ nav.value }}</a
+            >
+          </div>
+          } }
+      </mat-drawer>
+      <div class="example-sidenav-content">
+
+      </div>
+    </mat-drawer-container>
+    <mat-drawer-container [ngClass]="{'small-container': smallnav.opened}" autosize>
+      <mat-drawer #smallnav class="small-sidenav" mode="side" [opened]="false">
+        <div class="side-content">
+          <button class="small-content menu" mat-icon-button (click)="snav.toggle(); smallnav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <button mat-icon-button class="small-content" (click)="composeMail()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="small-content" [ngClass]="{'selected-content': selectedFolder === common.INBOX}" (click)="dialogActions(common.INBOX)">
+            <mat-icon>move_to_inbox</mat-icon>
+          </button>
+          <button mat-icon-button class="small-content" [ngClass]="{'selected-content': selectedFolder === common.STARRED}" (click)="dialogActions(common.STARRED)">
+            <mat-icon>star</mat-icon>
+          </button>
+          <!-- <button mat-icon-button class="small-content">
+            <mat-icon>email</mat-icon>
+          </button> -->
+          <!-- <button mat-icon-button class="sidenav-open small-content" (click)="snav.toggle(); smallnav.toggle()">
+            <mat-icon>first_page</mat-icon>
+          </button> -->
+        </div>
+      </mat-drawer>
+    </mat-drawer-container>
+    <div class="folder-contents">
+      @switch (selectedFolder) {
+        @case (common.INBOX) {
+          <app-inbox></app-inbox>
+        }
+        @case (common.STARRED) {
+          <app-starred></app-starred>
+        }
+      }
+    </div>
+  </div>
+
+</div>
